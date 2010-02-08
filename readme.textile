@@ -7,23 +7,29 @@ h2. Sample Usage
 <code>Total Assigned Categories: {exp:entry_category_count entry_id="{entry_id}"}</code>
 
 <code>
+<pre>
 {if {exp:entry_category_count entry_id="{entry_id}"} > 1}
   There are multiple categories assigned to this entry
 {/if}
+</pre>
 </code>
 
 <code>
+<pre>
 {if {exp:entry_category_count entry_id="{entry_id}"} == 0}
   There are no categories assigned to this entry
 {/if}
+</pre>
 </code>
 
 
 You can hardcode in an entry ID if you like
 <code>
+<pre>
 {if {exp:entry_category_count entry_id="124"} > 1}
   Your very awesome code here
 {/if}
+</pre>
 </code>
 
 
