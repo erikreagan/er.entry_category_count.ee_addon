@@ -32,7 +32,47 @@ class Entry_category_count
       global $DB, $TMPL;
       
       $entry_id = ($TMPL->fetch_param('entry_id') != '') ? $TMPL->fetch_param('entry_id') : '0';
-      $category_count = $DB->query("SELECT COUNT(*) FROM exp_category_posts WHERE entry_id = $entry_id");
+      $TMPL->log_item('Entry Category Count Plugin: Entry: '.$entry_id);
+      
+      $show_group = ($TMPL->fetch_param('show_group') != '') ? $TMPL->fetch_param('show_group') : FALSE ;
+      $TMPL->log_item('Entry Category Count Plugin: Show Group: '.$show_group);
+      
+      $show = ($TMPL->fetch_param('show') != '') ? $TMPL->fetch_param('show') : FALSE ;
+      $TMPL->log_item('Entry Category Count Plugin: Show Categories: '.$show);
+      
+      // Build our query now
+      $query = "SELECT COUNT(*) FROM exp_category_posts WHERE entry_id = '".$DB->escape_str($entry_id)."'";
+      
+      if($show)
+      {
+         $query .= " AND cat_id ";
+         
+         $cat_ids = str_replace('|',',',$show);
+         if(strpos($show,'not') !== FALSE)
+         {
+            $cat_ids = str_replace('not ','',$cat_ids);
+            $query .= "NOT ";
+         }
+         
+         $query .= "IN ($cat_ids)";
+      }
+      
+      if($show_group)
+      {
+         $query .= " AND cat_id ";
+         
+         $group_ids = str_replace('|',',',$show_group);
+         if(strpos($show_group,'not') !== FALSE)
+         {
+            $group_ids = str_replace('not ','',$group_ids);
+            $query .= "NOT ";
+         }
+         
+         $query .= "IN (SELECT cat_id FROM exp_categories WHERE group_id IN ($group_ids))";
+      }
+      $TMPL->log_item('Entry Category Count Plugin: Query: '.$query);
+      
+      $category_count = $DB->query($query);
       $this->return_data = $category_count->result[0]['COUNT(*)'];
    }
 
