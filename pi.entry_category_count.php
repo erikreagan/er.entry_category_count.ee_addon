@@ -7,15 +7,16 @@
  * system/plugins/ folder in your ExpressionEngine installation.
  *
  * @package EntryCategoryCount
- * @version 1.0
+ * @version 1.0.1
  * @author Erik Reagan http://erikreagan.com
  * @copyright Copyright (c) 2010 Erik Reagan
  * @see http://erikreagan.com/projects/entry-category-count/
+ * @license http://creativecommons.org/licenses/by-sa/3.0/ Attribution-Share Alike 3.0 Unported 
  */
 
 $plugin_info       = array(
    'pi_name'        => 'Entry Category Count',
-   'pi_version'     => '1.0.0',
+   'pi_version'     => '1.0.1',
    'pi_author'      => 'Erik Reagan',
    'pi_author_url'  => 'http://erikreagan.com',
    'pi_description' => 'Returns the number of categories assigned to any entry',

@@ -29,6 +29,10 @@ You can hardcode in an entry ID if you like
 
 h2. Change Log
 
-*+Feb 8th, 2010: 1.0.0+*
++*Mar 27th, 2010: 1.0.1*+
+
+* Assigned license to add-on: "Attribution-Share Alike 3.0 Unported":http://creativecommons.org/licenses/by-sa/3.0/
+
+*Feb 8th, 2010: 1.0.0*
 
 * Initial Release
